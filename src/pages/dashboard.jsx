@@ -1,7 +1,6 @@
 import DailyCalendar from "../components/calendrie.jsx";
 import { useState, useMemo, useEffect } from "react";
 import StatCard from '../components/StatCard.jsx';
-import ProjectTrendChart from "../components/ProjectTrendChart.jsx";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { Search, ChevronLeft, ChevronRight, AlertTriangle, Calendar, DollarSign, Clock, Briefcase, Users, UserCheck } from 'lucide-react';
