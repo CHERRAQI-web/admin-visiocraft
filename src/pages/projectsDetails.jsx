@@ -451,8 +451,7 @@ const ProjectDetails = () => {
                       <button
                         onClick={() => handleAssignProject(suggestion.freelancer_id._id)}
                         disabled={
-                          project.status === "assigned" ||
-                            project.status === "Completed" || 
+                              project.status !== "pending_assignment" ||
                           assigning[suggestion.freelancer_id._id]
                         }
                         className="px-3 py-1 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors text-sm"
@@ -524,8 +523,7 @@ const ProjectDetails = () => {
                           <button
                             onClick={() => handleAssignProject(suggestion.freelancer_id._id)}
                             disabled={
-                              project.status === "assigned" ||
-                               project.status === "Completed" || 
+                                  project.status !== "pending_assignment" || 
                               assigning[suggestion.freelancer_id._id]
                             }
                               
