@@ -56,7 +56,7 @@ const Dashboard = () => {
       try {
         setStatsLoading(true);
         setStatsError(null);
-        const response = await axios.get(`http://backend-visiocraft-production.up.railway.app/api/stats`, {
+        const response = await axios.get(`https://backend-visiocraft-production.up.railway.app/api/stats`, {
           withCredentials: true,
         });
         setDashboardStats(response.data);
@@ -89,7 +89,7 @@ const Dashboard = () => {
 
         params.append('status', 'pending_assignment');
 
-        const response = await axios.get(`http://backend-visiocraft-production.up.railway.app/api/projects/all?${params}`, {
+        const response = await axios.get(`https://backend-visiocraft-production.up.railway.app/api/projects/all?${params}`, {
           withCredentials: true,
         });
 
