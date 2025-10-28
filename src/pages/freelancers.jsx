@@ -142,21 +142,9 @@ const Freelancer = () => {
   };
 
   // Helper function to get freelancer name
-  const getFreelancerName = (freelancer) => {
-  // Try different possible paths to the name
-  if (freelancer.first_name && freelancer.last_name) {
-    return `${freelancer.first_name} ${freelancer.last_name}`;
-  }
-  if (freelancer.user_id?.first_name && freelancer.user_id?.last_name) {
-    return `${freelancer.user_id.first_name} ${freelancer.user_id.last_name}`;
-  }
-  if (freelancer.name) {
-    return freelancer.name;
-  }
-  if (freelancer.user_id?.name) {
-    return freelancer.user_id.name;
-  }
-  return "Unknown";
+const getFreelancerName = (freelancer) => {
+  // The name is stored in the 'username' field
+  return freelancer.username || "Unknown";
 };
 
   // Helper function to get freelancer email
@@ -171,17 +159,8 @@ const Freelancer = () => {
   return "No email";
 };
 const getPortfolioUrl = (freelancer) => {
-  // Try different possible paths to the portfolio URL
-  if (freelancer.portfolio_url) {
-    return freelancer.portfolio_url;
-  }
-  if (freelancer.portfolio) {
-    return freelancer.portfolio;
-  }
-  if (freelancer.website) {
-    return freelancer.website;
-  }
-  return null;
+  // The portfolio URL is in the 'portfolio' field
+  return freelancer.portfolio || null;
 };
   // Component rendering
   return (
