@@ -143,17 +143,46 @@ const Freelancer = () => {
 
   // Helper function to get freelancer name
   const getFreelancerName = (freelancer) => {
-    if (freelancer.user_id) {
-      return `${freelancer.user_id.first_name} ${freelancer.user_id.last_name}`;
-    }
-    return "Unknown";
-  };
+  // Try different possible paths to the name
+  if (freelancer.first_name && freelancer.last_name) {
+    return `${freelancer.first_name} ${freelancer.last_name}`;
+  }
+  if (freelancer.user_id?.first_name && freelancer.user_id?.last_name) {
+    return `${freelancer.user_id.first_name} ${freelancer.user_id.last_name}`;
+  }
+  if (freelancer.name) {
+    return freelancer.name;
+  }
+  if (freelancer.user_id?.name) {
+    return freelancer.user_id.name;
+  }
+  return "Unknown";
+};
 
   // Helper function to get freelancer email
-  const getFreelancerEmail = (freelancer) => {
-    return freelancer.user_id?.email || "No email";
-  };
-
+ const getFreelancerEmail = (freelancer) => {
+  // Try different possible paths to the email
+  if (freelancer.email) {
+    return freelancer.email;
+  }
+  if (freelancer.user_id?.email) {
+    return freelancer.user_id.email;
+  }
+  return "No email";
+};
+const getPortfolioUrl = (freelancer) => {
+  // Try different possible paths to the portfolio URL
+  if (freelancer.portfolio_url) {
+    return freelancer.portfolio_url;
+  }
+  if (freelancer.portfolio) {
+    return freelancer.portfolio;
+  }
+  if (freelancer.website) {
+    return freelancer.website;
+  }
+  return null;
+};
   // Component rendering
   return (
     <div className="bg-white p-4 md:p-6 rounded-xl shadow-md">
@@ -251,7 +280,7 @@ const Freelancer = () => {
                   <div className="mb-3">
                     <p className="text-xs font-semibold text-gray-500 uppercase mb-1">Portfolio</p>
                     {freelancer.portfolio_url ? (
-                      <a href={freelancer.portfolio_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                      <a href={getPortfolioUrl(freelancer)} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 text-sm flex items-center">
                         <Globe className="w-4 h-4 mr-1" />
                         View portfolio
                       </a>
