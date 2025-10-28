@@ -323,8 +323,8 @@ const getPortfolioUrl = (freelancer) => {
                         <div className="text-sm text-gray-900">{getFreelancerEmail(freelancer)}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {freelancer.portfolio_url ? (
-                          <a href={freelancer.portfolio_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 text-sm">View portfolio</a>
+                        {freelancer.portfolio ? (
+                          <a href={freelancer.portfolio} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 text-sm">View portfolio</a>
                         ) : (
                           <span className="text-gray-400 text-sm">Not specified</span>
                         )}
